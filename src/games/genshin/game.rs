@@ -50,12 +50,7 @@ pub fn run() -> anyhow::Result<()> {
 
     let config = Config::get()?;
 
-    let game_executable = config.patch.apply
-        .then_some("launcher.bat")
-        .unwrap_or_else(|| match config.launcher.edition {
-            genshin::GameEdition::Global => "GenshinImpact.exe",
-            genshin::GameEdition::China => "YuanShen.exe"
-        });
+    let game_executable = "launcher.bat";
 
     let game_path = config.game.path.for_edition(config.launcher.edition);
 
